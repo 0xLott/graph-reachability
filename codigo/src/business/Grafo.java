@@ -14,20 +14,22 @@ public abstract class Grafo {
 
     /**
      * Construtor: grafo com v vertices
+     * 
      * @param vertices Quantidade de vertices do grafo
      */
     public Grafo(int vertices) {
         this.vertices = vertices;
         this.arestas = 0;
         adj = new LinkedList[vertices];
-        
-        for(int v = 0; v < vertices; v++) {
+
+        for (int v = 0; v < vertices; v++) {
             adj[v] = new LinkedList<Integer>();
         }
     }
-    
-     /**
+
+    /**
      * Retorna a quantidade de vertices do grafo
+     * 
      * @return A quantidade de vertices do grafo
      */
     public int vertices() {
@@ -36,6 +38,7 @@ public abstract class Grafo {
 
     /**
      * Retorna a quantidade de arestas do grafo
+     * 
      * @return A quantidade de arestas do grafo
      */
     public int arestas() {
@@ -46,7 +49,8 @@ public abstract class Grafo {
 
     /**
      * Verifica se existe uma aresta entre v e w
-     * @param v Vertice incidente a aresta  
+     * 
+     * @param v Vertice incidente a aresta
      * @param w Vertice incidente a aresta
      * @return Retorna verdadeiro se a aresta existe
      */
@@ -56,8 +60,10 @@ public abstract class Grafo {
 
     /**
      * Retorna uma representação do grafo em string
+     * 
      * @return Retorna uma string que representa o grafo
      */
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append(vertices + " vertices, " + arestas + " edges \n");
@@ -71,8 +77,9 @@ public abstract class Grafo {
         return s.toString();
     }
 
-     /**
+    /**
      * Retorna os vertices adjacentes a v.
+     * 
      * @param v Vertice de partida
      * @return Os vertices adjacentes ao vetice v
      */
