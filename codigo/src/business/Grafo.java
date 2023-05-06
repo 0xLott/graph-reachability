@@ -59,20 +59,24 @@ public abstract class Grafo {
     }
 
     /**
-     * Retorna uma representação do grafo em string
-     * 
+     * Retorna uma representação do grafo em string no seguinte formato:
+     * 1ª linha: qtd. de vértices, qtd. de arestas
+     * Demais linhas: vértice de origem + vértice de destino
+     *
      * @return Retorna uma string que representa o grafo
      */
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append(vertices + " vertices, " + arestas + " edges \n");
+
+        s.append(vertices + ", " + arestas + "\n");
+
         for (int v = 0; v < vertices; v++) {
-            s.append(v + ": ");
-            for (int w : adj[v]) {
-                s.append(w + " ");
+            for (int e : adj[v]){
+                s.append(v);
+                s.append(" " + e);
+                s.append("\n");
             }
-            s.append("\n");
         }
         return s.toString();
     }
