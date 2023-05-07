@@ -6,9 +6,6 @@ import java.util.*;
 public class Gerador {
     private static Random randomNum = new Random();
 
-    private Gerador() {
-    };
-
     /**
      * Gera grafo direcionado simples com valores aleatórios para vértices e arestas conforme
      * a quantidade recebida por parâmetro.

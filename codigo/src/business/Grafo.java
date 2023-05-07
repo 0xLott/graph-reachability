@@ -113,7 +113,7 @@ public class Grafo {
     public String toString() {
         StringBuilder s = new StringBuilder();
 
-        s.append(vertices + ", " + arestas + "\n");
+        s.append(vertices + "," + arestas + "\n");
 
         for (int v = 0; v < vertices; v++) {
             for (int e : adj[v]){
