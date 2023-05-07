@@ -7,10 +7,11 @@ package business;
 
 import java.util.LinkedList;
 
-public abstract class Grafo {
+public class Grafo {
     protected final int vertices;
     protected int arestas;
     protected LinkedList<Integer>[] adj;
+    private int[] grauEntrada;
 
     /**
      * Construtor: grafo com v vertices
@@ -21,6 +22,7 @@ public abstract class Grafo {
         this.vertices = vertices;
         this.arestas = 0;
         adj = new LinkedList[vertices];
+        grauEntrada = new int[vertices];
 
         for (int v = 0; v < vertices; v++) {
             adj[v] = new LinkedList<Integer>();
@@ -45,7 +47,17 @@ public abstract class Grafo {
         return arestas;
     }
 
-    public abstract void adicionarArestas(int v, int w);
+    /**
+     * Adiciona uma aresta partindo de v e chegando em w
+     *
+     * @param v Vertice de saída
+     * @param w Vertice de chegada
+     */
+    public void adicionarArestas(int v, int w) {
+        adj[v].add(w);
+        grauEntrada[w]++;
+        arestas++;
+    }
 
     /**
      * Verifica se existe uma aresta entre v e w
@@ -56,6 +68,38 @@ public abstract class Grafo {
      */
     public boolean existeAresta(int v, int w) {
         return adj[v].contains(w);
+    }
+
+
+    /**
+     * Retorna os vertices adjacentes a v.
+     * 
+     * @param v Vertice de partida
+     * @return Os vertices adjacentes ao vetice v
+     */
+    public Iterable<Integer> adj(int v) {
+        return adj[v];
+    }
+
+
+    /**
+     * Retorna o número de arestas que saem de um vertice
+     *
+     * @param v O vertice
+     * @return O grau de saída de V
+     */
+    public int grauSaida(int v) {
+        return adj[v].size();
+    }
+
+    /**
+     * Retorna o número de arestas que entram em um vertice
+     *
+     * @param v O vertice
+     * @return O grau de entrada de V
+     */
+    public int grauEntrada(int v) {
+        return grauEntrada(v);
     }
 
     /**
@@ -80,15 +124,4 @@ public abstract class Grafo {
         }
         return s.toString();
     }
-
-    /**
-     * Retorna os vertices adjacentes a v.
-     * 
-     * @param v Vertice de partida
-     * @return Os vertices adjacentes ao vetice v
-     */
-    public Iterable<Integer> adj(int v) {
-        return adj[v];
-    }
-
 }

@@ -1,5 +1,6 @@
 package business;
 
+import java.io.FileWriter;
 import java.util.*;
 
 public class Gerador {
@@ -8,9 +9,17 @@ public class Gerador {
     private Gerador() {
     };
 
-    public static GrafoDirecionado gerarGrafoDirecionadoSimples(int qtdVertices, int qtdArestas) {
+    /**
+     * Gera grafo direcionado simples com valores aleatórios para vértices e arestas conforme
+     * a quantidade recebida por parâmetro.
+     *
+     * @param qtdVertices Quantidade de vértices a serem gerados
+     * @param qtdArestas Quantidade de arestas a serem gerados
+     * @return  Grafo gerado
+     */
+    public static Grafo gerarGrafoSimples(int qtdVertices, int qtdArestas) {
 
-        GrafoDirecionado g = new GrafoDirecionado(qtdVertices);
+        Grafo g = new Grafo(qtdVertices);
 
         if (qtdVertices < 0) {
             throw new IllegalArgumentException("Quantidade de vertices inválida");
@@ -27,6 +36,24 @@ public class Gerador {
             }
 
             return g;
+        }
+    }
+
+    public static void escreverArquivo(Grafo g) {
+        try {
+            FileWriter graph100 = new FileWriter("./codigo/graph100.txt");
+
+            try {
+                graph100.append(g.toString());
+                graph100.flush();
+            } catch (Exception e) {
+                System.out.println("Erro ao escrever em arquivo.");
+            } finally {
+                graph100.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao gerar arquivo.");
         }
     }
 }
