@@ -7,12 +7,13 @@ public class Gerador {
     private static Random randomNum = new Random();
 
     /**
-     * Gera grafo direcionado simples com valores aleatórios para vértices e arestas conforme
+     * Gera grafo direcionado simples com valores aleatórios para vértices e arestas
+     * conforme
      * a quantidade recebida por parâmetro.
      *
      * @param qtdVertices Quantidade de vértices a serem gerados
-     * @param qtdArestas Quantidade de arestas a serem gerados
-     * @return  Grafo gerado
+     * @param qtdArestas  Quantidade de arestas a serem gerados
+     * @return Grafo gerado
      */
     public static Grafo gerarGrafoSimples(int qtdVertices, int qtdArestas) {
 
