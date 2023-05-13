@@ -8,9 +8,9 @@ package business;
 import java.util.LinkedList;
 
 public class Grafo {
-    protected final int vertices;
-    protected int arestas;
-    protected LinkedList<Integer>[] adj;
+    private final int vertices;
+    private int arestas;
+    private LinkedList<Integer>[] adj;
     private int[] grauEntrada;
 
     /**

@@ -23,7 +23,7 @@ public class Gerador {
         } else if (qtdArestas < 0 || qtdArestas > (qtdVertices * (qtdVertices - 1) / 2)) {
             throw new IllegalArgumentException("Quantidade de arestas inválida");
         } else {
-            while (qtdArestas > g.arestas) {
+            while (qtdArestas > g.arestas()) {
                 int v = randomNum.nextInt(qtdVertices);
                 int w = randomNum.nextInt(qtdVertices);
 
