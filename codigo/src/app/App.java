@@ -5,7 +5,7 @@ import java.io.File;
 
 public class App {
     public static void imprimirFechoTransitivoDiretoFloydWarshall(Grafo g) {
-        boolean fechoTransitivo[][] = FloydWarshall.fechoTransitivo(g);
+        boolean fechoTransitivo[][] = Warshall.fechoTransitivo(g);
         
         System.out.println("Fecho transitivo direto de todos os vertices do grafo: ");
         
@@ -23,7 +23,7 @@ public class App {
     } 
 
     public static void imprimirFechoTransitivoDiretoFloydWarshall(Grafo g, int v) {
-        boolean fechoTransitivo[][] = FloydWarshall.fechoTransitivo(g);
+        boolean fechoTransitivo[][] = Warshall.fechoTransitivo(g);
         
         System.out.println("Fecho transitivo direto de : " +  v);
         System.out.print("[" + v + "]: ");
@@ -36,7 +36,7 @@ public class App {
     }
     
     public static void imprimirFechoTransitivoInversoFloydWarshall(Grafo g) {
-        boolean fechoInverso[][] = FloydWarshall.fechoTransitivo(g);
+        boolean fechoInverso[][] = Warshall.fechoTransitivo(g);
         System.out.println("Fecho transitivo inverso de todos os vertices do grafo: ");
 
         for(int i = 0; i < g.vertices(); i++) {
@@ -52,7 +52,7 @@ public class App {
     }
 
     public static void imprimirFechoTransitivoInversoFloydWarshall(Grafo g, int v) {
-        boolean fechoInverso[][] = FloydWarshall.fechoTransitivo(g);
+        boolean fechoInverso[][] = Warshall.fechoTransitivo(g);
         
         System.out.println("Fecho transitivo inverso de : " +  v);
         System.out.print("[" + v + "]: ");

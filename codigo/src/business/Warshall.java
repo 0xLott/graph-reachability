@@ -1,7 +1,7 @@
 package business;
 
-public class FloydWarshall {
-    private FloydWarshall(){};
+public class Warshall {
+    private Warshall(){};
 
     public static boolean[][] fechoTransitivo(Grafo grafo) {
         int qtdVertices = grafo.vertices();

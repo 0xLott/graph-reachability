@@ -30,3 +30,4 @@ graph-reachability.iml
 .idea/inspectionProfiles/Project_Default.xml
 .gitignore
 .idea/vcs.xml
+.idea/uiDesigner.xml
