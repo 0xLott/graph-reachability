@@ -8,6 +8,7 @@ package business;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class MetodoNaive {
 
@@ -153,6 +154,58 @@ public class MetodoNaive {
         }
 
         System.out.print("]");
+    }
+
+    /**
+     * Gera uma lista com os vertices que possuem como fecho transitivo apenas ele mesmo
+     * @param g Grafo a ser utilizado para achar base ou antibase (inverter grafo para achar antibase)
+     * @return
+     */
+    public static ArrayList gerarBase(Grafo g) {
+    	ArrayList<Integer> base = new ArrayList<Integer>();
+    	
+    	for(int v = 0; v < g.vertices(); v++) {
+    		Object[] fecho = BFS(MetodoNaive.gerarGrafoInverso(g), v).toArray();
+    		if(fecho.length == 1) {
+    			base.add(v);
+    		}
+    	}
+    	
+    	return base;
+    }
+    
+    /**
+     * Imprime a base de um grafo
+     * @param g Grafo a ser utilizado para achar a base
+     */
+    public static void imprimirBase(Grafo g) {
+    	
+    	ArrayList<Integer> base = MetodoNaive.gerarBase(g);
+    	
+    	System.out.print("Base = {");
+    	
+    	for (int v: base) {
+    		System.out.print(v + " ");
+    	}
+    	
+    	System.out.println("}");    	
+    }
+    
+    /**
+     * Imprime a antibase de um grafo
+     * @param g Grafo a ser utilizado para achar a antibase
+     */
+    public static void imprimirAntiBase(Grafo g) {
+    	
+    	ArrayList<Integer> base = MetodoNaive.gerarBase(MetodoNaive.gerarGrafoInverso(g));
+    	
+    	System.out.print("Antibase = {");
+    	
+    	for (int v: base) {
+    		System.out.print(v + " ");
+    	}
+    	
+    	System.out.println("}");    	
     }
 
 }
