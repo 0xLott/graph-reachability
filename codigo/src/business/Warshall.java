@@ -1,5 +1,7 @@
 package business;
 
+import java.util.ArrayList;
+
 public class Warshall {
     private Warshall() {
     };
@@ -124,4 +126,84 @@ public class Warshall {
 
         System.out.println(" ");
     }
+
+    /**
+     * Metodo para gerar uma lista com a antibase do grafo g
+     * @param g Grafo a ser utilizado para achar a antibase
+     * @return
+     */
+    public static ArrayList gerarAntiBase(Grafo g) {
+    	boolean fechoTransitivo[][] = Warshall.fechoTransitivo(g);
+    	ArrayList<Integer> antiBase = new ArrayList<Integer>();
+  
+    	for(int i = 0; i < g.vertices(); i++) {
+    		int ehAntiBase = 0;
+    		for (int j = 0; j < g.vertices(); j++) {
+    			if(fechoTransitivo[i][j]) {
+    				ehAntiBase++;
+    			}
+    		}
+    		if(ehAntiBase == 1) {
+    			antiBase.add(i);
+    		}
+    	}
+    	
+    	return antiBase;
+    	
+    }
+    
+    /**
+     * Imprime a lista de antibase
+     * @param g Grafo que deve ser utilizado para achar a antibase
+     */
+    public static void imprimirAntiBase(Grafo g) {
+    	ArrayList<Integer> antiBase = Warshall.gerarAntiBase(g);
+    	
+    	System.out.print("Antibase: {");
+    	for(int v: antiBase) {
+    		System.out.print(v + " ");
+    	}
+    	System.out.println("}");
+    }
+
+    /**
+     * Metodo para calcular e gerar uma lista com as bases de um grafo
+     * @param g Grafo a ser utilizado para achar as bases
+     * @return
+     */
+    public static ArrayList gerarBase(Grafo g) {
+    	boolean fechoInverso[][] = Warshall.fechoTransitivo(g);
+    	ArrayList<Integer> Base = new ArrayList<Integer>();
+  
+    	for(int i = 0; i < g.vertices(); i++) {
+    		int ehBase = 0;
+    		
+       		for (int j = 0; j < g.vertices(); j++) {
+    			if(fechoInverso[j][i]) {
+    				ehBase++;
+    			}
+    		}
+    		if(ehBase == 1) {
+    			Base.add(i);
+    		}
+    	}
+    	
+    	return Base;
+    	
+    }
+    
+    /**
+     * Imprime a lista de bases do grafo
+     * @param g Grafo a ser utilizado para imprimir as bases
+     */
+    public static void imprimirBase(Grafo g) {
+    	ArrayList<Integer> Base = Warshall.gerarAntiBase(g);
+    	
+    	System.out.print("Base: {");
+    	for(int v: Base) {
+    		System.out.print(v + " ");
+    	}
+    	System.out.println("}");
+    }
+
 }
