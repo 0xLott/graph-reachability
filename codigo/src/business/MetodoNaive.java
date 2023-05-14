@@ -59,6 +59,20 @@ public class MetodoNaive {
         return fechoTransitivo;
     }
 
+    public static Grafo gerarGrafoInverso (Grafo g) {
+    	Grafo inverso = new Grafo(g.vertices());
+    	
+    	String grafoString = g.toString();
+    	String[] grafoInverso = grafoString.split("\n");
+    	
+    	for(int i = 1; i <= g.arestas(); i++) {
+    		String[] vertices = grafoInverso[i].split(" ");
+    		inverso.adicionarArestas(Integer.parseInt(vertices[1]), Integer.parseInt(vertices[0]));
+    	}
+    
+    	return inverso;
+    }
+
     /**
      * Calcula e imprime o fecho transitivo direto de determinado vértice de um
      * grafo
@@ -79,7 +93,7 @@ public class MetodoNaive {
     }
 
     /**
-     * Calcula e imprime o fecho transitivo inverso de todos os vértices de um
+     * Calcula e imprime o fecho transitivo direto de todos os vértices de um
      * grafo.
      *
      * @param g Grafo a ser utilizado para calcular o fecho transitivo.
@@ -98,6 +112,47 @@ public class MetodoNaive {
 
             System.out.print("]\n");
         }
+    }
+
+    /**
+     * Calcula e imprime o fecho transitivo inverso de todos os vértices de um
+     * grafo.
+     *
+     * @param g Grafo a ser utilizado para ser invertido e calcular o fecho transitivo.
+     */
+    public static void imprimirFechoTransitivoInverso(Grafo g) {
+
+        for (int v = 0; v < g.vertices(); v++) {
+
+            Object[] fecho = BFS(MetodoNaive.gerarGrafoInverso(g), v).toArray();
+
+            System.out.print("r-(" + v + ") = [");
+
+            for (int i = 0; i < fecho.length; i++) {
+                System.out.printf(fecho[i] + " ");
+            }
+
+            System.out.print("]\n");
+        }
+    }
+    
+    /**
+     * Calcula e imprime o fecho transitivo inverso de determinado vértice de um
+     * grafo
+     *
+     * @param g Grafo a ser utilizado para ser invertido e calcular o fecho transitivo.
+     * @param v vértice selecionado
+     */
+    public static void imprimirFechoTransitivoInverso(Grafo g, int v) {
+        Object[] fecho = BFS(MetodoNaive.gerarGrafoInverso(g), v).toArray();
+
+        System.out.print("r-(" + v + ") = [");
+
+        for (int i = 0; i < fecho.length; i++) {
+            System.out.printf(fecho[i] + " ");
+        }
+
+        System.out.print("]");
     }
 
 }
