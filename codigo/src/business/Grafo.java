@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class Grafo {
     private final int vertices;
     private int arestas;
-    private LinkedList<Integer>[] adj;
+    LinkedList<Integer>[] adj;
     private int[] grauEntrada;
 
     /**
@@ -70,7 +70,6 @@ public class Grafo {
         return adj[v].contains(w);
     }
 
-
     /**
      * Retorna os vertices adjacentes a v.
      * 
@@ -80,7 +79,6 @@ public class Grafo {
     public Iterable<Integer> adj(int v) {
         return adj[v];
     }
-
 
     /**
      * Retorna o número de arestas que saem de um vertice

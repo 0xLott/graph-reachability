@@ -65,7 +65,7 @@ public class Warshall {
 
     /**
      * Calcula e imprime o fecho transitivo direto de determinado vértice de um
-     * grafo
+     * grafo.
      *
      * @param g Grafo a ser utilizado para calcular o fecho transitivo.
      * @param v vértice selecionado
@@ -84,7 +84,7 @@ public class Warshall {
     }
 
     /**
-     * Calcula e imprime o fecho transitivo inverso de todos os vértices de um grafo
+     * Calcula e imprime o fecho transitivo inverso de todos os vértices de um grafo.
      *
      * @param g Grafo a ser utilizado para calcular o fecho transitivo.
      */

@@ -6,7 +6,11 @@ import business.*;
 public class App {
 
     public static void main(String[] args) {
-        Grafo grafo100 = Gerador.gerarGrafoSimples(1000, 999);
-        Warshall.imprimirFechoTransitivoDireto(grafo100);
+        Grafo grafo = Gerador.gerarGrafoSimples(15, 30);
+//        Warshall.imprimirFechoTransitivoDireto(grafo);
+
+        MetodoNaive.imprimirFechoTransitivoDireto(grafo);
+
+
     }
 }
