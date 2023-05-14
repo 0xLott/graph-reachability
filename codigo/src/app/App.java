@@ -13,13 +13,17 @@ public class App {
         long start = System.currentTimeMillis();    // Início: Contador do tempo de execução 
 
 
-        Grafo grafo = Gerador.gerarGrafoSimples(10000, 1);
+        Grafo grafo = Gerador.gerarGrafoSimples(100000, 50);
 
         Warshall.imprimirFechoTransitivoDireto(grafo);
-        // Warshall.imprimirFechoTransitivoInverso(grafo);
+        Warshall.imprimirFechoTransitivoInverso(grafo);
+        Warshall.imprimirBase(grafo);
+        Warshall.imprimirAntiBase(grafo);
 
-        // MetodoNaive.imprimirFechoTransitivoDireto(grafo);
-        // MetodoNaive.imprimirFechoTransitivoInverso(grafo);
+        MetodoNaive.imprimirFechoTransitivoDireto(grafo);
+        MetodoNaive.imprimirFechoTransitivoInverso(grafo);
+        MetodoNaive.imprimirBase(grafo);
+        MetodoNaive.imprimirAntiBase(grafo);
 
 
         long end = System.currentTimeMillis();  // Fim: Contador do tempo de execução 
